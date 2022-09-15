@@ -1,0 +1,65 @@
+1663149178048	geckodriver	INFO	Listening on 127.0.0.1:53495
+1663149181081	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Firefox Developer Edition\\firefox.exe" "--marionette" "-headless" "--remote-debugging-port" "53496" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\tahmi\\AppData\\Local\\Temp\\rust_mozprofileFBdObP"
+*** You are running in headless mode.
+1663149181735	Marionette	INFO	Marionette enabled
+1663149181741	Marionette	INFO	Listening on port 53529
+WebDriver BiDi listening on ws://127.0.0.1:53496
+Read port: 53529
+1663149182023	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\tahmi\\AppData\\Local\\Temp\\rust_mozprofileFBdObP\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53496/devtools/browser/bf22109b-2cb9-4bfc-803b-496385006d0b
+1663149184968	Marionette	INFO	Stopped listening on port 53529
+[Parent 14524, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+1663149227323	geckodriver	INFO	Listening on 127.0.0.1:53605
+1663149230407	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Firefox Developer Edition\\firefox.exe" "--marionette" "-headless" "--remote-debugging-port" "53606" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\tahmi\\AppData\\Local\\Temp\\rust_mozprofileIiSqXd"
+*** You are running in headless mode.
+1663149230814	Marionette	INFO	Marionette enabled
+1663149230819	Marionette	INFO	Listening on port 53618
+Read port: 53618
+WebDriver BiDi listening on ws://127.0.0.1:53606
+1663149230935	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\tahmi\\AppData\\Local\\Temp\\rust_mozprofileIiSqXd\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53606/devtools/browser/788d859e-e9e8-4127-9e57-e58f929ae467
+1663149233448	Marionette	INFO	Stopped listening on port 53618
+[Parent 18288, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+1663149588087	geckodriver	INFO	Listening on 127.0.0.1:53921
+1663149591187	mozrunner::runner	INFO	Running command: "C:\\Users\\tahmi\\Desktop\\Tor Browser\\Browser\\firefox.exe" "--marionette" "--remote-debugging-port" "53922" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\tahmi\\AppData\\Local\\Temp\\rust_mozprofiledAMrq3"
+console.log: "TorConnect: init()"
+console.log: "TorConnect: Entering Initial state"
+console.log: "TorConnect: Observed profile-after-change"
+console.log: "TorConnect: Observing topic 'TorProcessExited'"
+console.log: "TorConnect: Observing topic 'TorLogHasWarnOrErr'"
+console.log: "TorConnect: Observing topic 'torsettings:ready'"
+console.log: "TorSettings: Observed profile-after-change"
+1663149591784	Marionette	INFO	Marionette enabled
+console.log: "TorConnect: Will load after bootstrap => [about:blank]"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\tahmi\\AppData\\Local\\Temp\\rust_mozprofiledAMrq3\\search.json.mozlz4", (void 0)))
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: "Could not load engine google@search.mozilla.org: Error: Extension is invalid"
+console.error: "Could not load engine blockchair-onion@search.mozilla.org: Error: Extension is invalid"
+DevTools listening on ws://localhost:53922/devtools/browser/9cb2b825-c99e-40d1-96ab-771e4ee360a8
+1663149594139	Marionette	INFO	Listening on port 53936
+1663149594363	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.log: "TorSettings: saveToPrefs()"
+console.log: "TorSettings: applySettings()"
+console.log: "TorConnect: beginBootstrap()"
+console.log: "TorConnect: Try transitioning from Initial to Bootstrapping"
+console.log: "TorConnect: Exited Initial state"
+console.log: "TorConnect: Entering Bootstrapping state"
+1663149696009	Marionette	INFO	Stopped listening on port 53936
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+!!! error running onStopped callback: TypeError: callback is not a function
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1663149696124	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 64"  data: no] Stack trace: stop()@TargetObserver.jsm:64
+unwatchForTabs()@TargetList.jsm:70
+unwatchForTargets()@TargetList.jsm:37
+destructor()@TargetList.jsm:109
+stop()@CDP.jsm:104
+close()@RemoteAgent.jsm:138
