@@ -6,5 +6,4 @@ Steps -
 2. Run main.py
 3.  Enter "Filename". It  will ask in console. 
 4.  Enter "Enter Link". It  will ask in console. 
-
-![](ezgif.com-gif-maker.gif)
+![](https://github.com/SoCloseSociety/Google_Map_Bot/blob/main/ezgif.com-gif-maker.gif)
