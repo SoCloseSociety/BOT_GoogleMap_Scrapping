@@ -5,8 +5,7 @@ Your machine must be installed with python. To check, go to CMD any type -> py. 
 Your machine must be installed with python. To check, go to CMD and type -> py.  <br />
 It will show the Installed python version if python is already installed on your machine. <br />
 If not, go to - https://www.python.org/
-<br />
-<br />
+
 ***********************
 - Nord VPN is required
 - Your machine need to able connect with nord through command line.
