@@ -30,7 +30,7 @@ import os
 import random
 
 
-#pyautogui.FAILSAFE = False
+pyautogui.FAILSAFE = False
 
 file_name = input("Filename : ")
 search_query_link = input("Enter Link: ")
@@ -86,7 +86,7 @@ while(True):
     print(now_links_length)
 
     if now_links_length == prev_links_length:
-        if count % 20 == 0 :
+        if count % 30 == 0 :
             break
     else:
         prev_links_length = now_links_length
@@ -240,5 +240,4 @@ with open(file_name+'_map_links.csv', 'r', encoding="utf-8") as file:
             df2.to_csv(file_name+'_map_details.csv') 
 
             driver.quit()
-
 
