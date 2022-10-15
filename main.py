@@ -1,5 +1,6 @@
 from calendar import c
 from itertools import count
+from operator import le
 from xml.dom.minidom import Document
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -28,7 +29,8 @@ from glob import glob
 import os 
 import random
 
-# file_name = "all_charpentier_in_rueil-malmaison"
+
+#pyautogui.FAILSAFE = False
 
 file_name = input("Filename : ")
 search_query_link = input("Enter Link: ")
@@ -56,23 +58,43 @@ driver.maximize_window()
 ############################################################################################################
 links = []
 
+prev_links_length = 0
+now_links_length = 0
+
+count = 0
+
 driver.get(search_query_link)  
 time.sleep(10)
 pyautogui.moveTo(100, 200)
 
 while(True):
+    count = count + 1
     html = driver.page_source
     soup = BeautifulSoup(html, features="html.parser")
-    last = soup.body.findAll(text='You\'ve reached the end of the list.')
-    print(last)
-    if(len(last)>0):
-        break
-    pyautogui.scroll(-100)
+
+    for a in soup.find_all('a', href=True):
+        if 'www.google.com/maps/place/' in a['href']:
+            links.append(a['href'])
+    
+    links = list(set(links))
+
+
+
+    now_links_length = len(links)
+
+    print(prev_links_length)
+    print(now_links_length)
+
+    if now_links_length == prev_links_length:
+        if count % 20 == 0 :
+            break
+    else:
+        prev_links_length = now_links_length
+
+    pyautogui.scroll(-1000000)
     time.sleep(0.5)
 
-for a in soup.find_all('a', href=True):
-    if 'https://www.google.com/maps/' in a['href']:
-        links.append(a['href'])
+print(len(links))
 
 df = pd.DataFrame({"map_Link" : links})       
 df.to_csv(file_name+"_map_links.csv", index=False)
@@ -89,7 +111,7 @@ my_open_timing = []
 my_website = []
 my_phone_number = []
 
-
+# file_name = 'm6'
 
 with open(file_name+'_map_links.csv', 'r', encoding="utf-8") as file:
     reader = csv.reader(file)
@@ -218,4 +240,5 @@ with open(file_name+'_map_links.csv', 'r', encoding="utf-8") as file:
             df2.to_csv(file_name+'_map_details.csv') 
 
             driver.quit()
+
 
