@@ -28,7 +28,7 @@ import pandas as pd
 from glob import glob
 import os 
 import random
-
+from selenium.webdriver.common.keys import Keys
 
 pyautogui.FAILSAFE = False
 
@@ -73,7 +73,7 @@ while(True):
     soup = BeautifulSoup(html, features="html.parser")
 
     for a in soup.find_all('a', href=True):
-        if 'www.google.com/maps/place/' in a['href']:
+        if '/maps/place/' in a['href']:
             links.append(a['href'])
     
     links = list(set(links))
@@ -86,13 +86,13 @@ while(True):
     print(now_links_length)
 
     if now_links_length == prev_links_length:
-        if count % 30 == 0 :
+        if count % 50 == 0 :
             break
     else:
         prev_links_length = now_links_length
 
     pyautogui.scroll(-1000000)
-    time.sleep(0.5)
+    time.sleep(1)
 
 print(len(links))
 
@@ -100,10 +100,10 @@ df = pd.DataFrame({"map_Link" : links})
 df.to_csv(file_name+"_map_links.csv", index=False)
 
 driver.quit()
-#############################################################################################################
-#############################################################################################################
-#############################################################################################################
-#############################################################################################################
+# #############################################################################################################
+# #############################################################################################################
+# #############################################################################################################
+# #############################################################################################################
 
 my_name= []
 my_address= []
@@ -117,7 +117,9 @@ with open(file_name+'_map_links.csv', 'r', encoding="utf-8") as file:
     reader = csv.reader(file)
     for row in reader:
         if '/' in row[0] and 'reserve/v/dine' not in row[0]:
+
             print(row[0])
+
             found_timing = False
             found_address = False
             found_website = False
@@ -126,8 +128,9 @@ with open(file_name+'_map_links.csv', 'r', encoding="utf-8") as file:
 
             driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)  # version_main allows to specify your chrome version instead of following chrome global version
             driver.maximize_window()
-            driver.get(row[0])
+            driver.get(row[0]+"&hl=en")
             time.sleep(5)
+
             while(True):
                 time.sleep(5)
                 try:
@@ -135,12 +138,12 @@ with open(file_name+'_map_links.csv', 'r', encoding="utf-8") as file:
                     break
                 except:
                     driver.close()
-                    os.system('nordvpn -c')
+                    os.system('nordvpn -c -g "United States"')
                     time.sleep(10)
 
                     while(True):
                         if(is_connected()==False):
-                            os.system('nordvpn -c')
+                            os.system('nordvpn -c -g "United States"')
                             time.sleep(10)
                         elif(is_connected()==True):
                             break    
@@ -199,7 +202,7 @@ with open(file_name+'_map_links.csv', 'r', encoding="utf-8") as file:
                         print("Phone number not found")
 
 
-                elif 'Hide open hours' in d['aria-label']:
+                elif 'Hide opening hours' in d['aria-label']:
                     found_timing = True
                     timing = d['aria-label']
                     timing = timing.split('.')
@@ -240,4 +243,3 @@ with open(file_name+'_map_links.csv', 'r', encoding="utf-8") as file:
             df2.to_csv(file_name+'_map_details.csv') 
 
             driver.quit()
-
