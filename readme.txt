@@ -14,10 +14,11 @@ If not, go to - https://www.python.org/
 ****************************************************************************
 
 Steps - 
-1. Run requirements.txt  from cmd. Type this command in your project terminal -> pip install -r requirements.txt
-2. Run main.py
-3.  Enter "Filename". It  will ask in console. 
-4.  Enter "Enter Link". It  will ask in console. 
+1. Run Nord Vpn normally & connect with United States
+2. Run requirements.txt  from cmd. Type this command in your project terminal -> pip install -r requirements.txt
+3. Run main.py
+4.  Enter "Filename". It  will ask in console. 
+5.  Enter "Enter Link". It  will ask in console. 
 Your link will be this ->
 https://github.com/SoCloseSociety/Google_Map_Bot/blob/main/ezgif.com-gif-maker.gif
 
