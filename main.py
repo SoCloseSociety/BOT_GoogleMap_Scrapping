@@ -202,7 +202,7 @@ with open(file_name+'_map_links.csv', 'r', encoding="utf-8") as file:
                         print("Phone number not found")
 
 
-                elif 'Hide opening hours' in d['aria-label']:
+                elif 'Hide opening hours' in d['aria-label'] or  'Hide open hours' in d['aria-label']:
                     found_timing = True
                     timing = d['aria-label']
                     timing = timing.split('.')
