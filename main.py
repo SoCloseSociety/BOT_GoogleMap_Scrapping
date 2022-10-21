@@ -68,31 +68,34 @@ time.sleep(10)
 pyautogui.moveTo(100, 200)
 
 while(True):
-    count = count + 1
-    html = driver.page_source
-    soup = BeautifulSoup(html, features="html.parser")
+    try:
+        html = driver.page_source
+        soup = BeautifulSoup(html, features="html.parser")
 
-    for a in soup.find_all('a', href=True):
-        if '/maps/place/' in a['href']:
-            links.append(a['href'])
-    
-    links = list(set(links))
+        for a in soup.find_all('a', href=True):
+            if '/maps/place/' in a['href']:
+                links.append(a['href'])
+        
+        links = list(set(links))
 
 
+        count = count + 1
+        now_links_length = len(links)
 
-    now_links_length = len(links)
+        print(prev_links_length)
+        print(now_links_length)
 
-    print(prev_links_length)
-    print(now_links_length)
+        if now_links_length == prev_links_length:
+            if count % 50 == 0 :
+                break
+        else:
+            prev_links_length = now_links_length
 
-    if now_links_length == prev_links_length:
-        if count % 50 == 0 :
-            break
-    else:
-        prev_links_length = now_links_length
-
-    pyautogui.scroll(-1000000)
-    time.sleep(1)
+        pyautogui.scroll(-1000000)
+        time.sleep(1)
+    except:
+        print("Error!")
+        break
 
 print(len(links))
 
