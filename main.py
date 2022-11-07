@@ -30,7 +30,9 @@ import os
 import random
 from selenium.webdriver.common.keys import Keys
 
+
 pyautogui.FAILSAFE = False
+
 
 file_name = input("Filename : ")
 search_query_link = input("Enter Link: ")
@@ -52,6 +54,21 @@ def is_connected():
      pass # we ignore any errors, returning False
   return False
 
+def xpath_soup(element):
+    components = []
+    child = element if element.name else element.parent
+    for parent in child.parents:
+        siblings = parent.find_all(child.name, recursive=False)
+        components.append(
+            child.name
+            if siblings == [child] else
+            '%s[%d]' % (child.name, 1 + siblings.index(child))
+            )
+        child = parent
+    components.reverse()
+    return '/%s' % '/'.join(components)
+
+
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)  # version_main allows to specify your chrome version instead of following chrome global version
 driver.maximize_window()
 
@@ -60,12 +77,28 @@ links = []
 
 prev_links_length = 0
 now_links_length = 0
+result_div_class = ""
 
 count = 0
 
 driver.get(search_query_link)  
 time.sleep(10)
-pyautogui.moveTo(100, 200)
+# pyautogui.moveTo(100, 200)
+html = driver.page_source
+soup = BeautifulSoup(html, features="html.parser")
+
+input_field = soup.find('input', attrs={'id':'searchboxinput'})
+print(input_field['value'])
+
+all_divs = soup.find_all('div', role="feed")
+
+for a_d in  all_divs:
+    if input_field['value'] in a_d['aria-label'] :
+        s = driver.find_element(By.XPATH, xpath_soup(a_d))
+        break
+
+
+
 
 while(True):
     try:
@@ -91,7 +124,7 @@ while(True):
         else:
             prev_links_length = now_links_length
 
-        pyautogui.scroll(-1000000)
+        driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight",s)
         time.sleep(1)
     except:
         print("Error!")
