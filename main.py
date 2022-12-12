@@ -87,13 +87,13 @@ time.sleep(10)
 html = driver.page_source
 soup = BeautifulSoup(html, features="html.parser")
 
-input_field = soup.find('input', attrs={'id':'searchboxinput'})
-print(input_field['value'])
+input_txt_div = soup.find('div', attrs={'id':'searchbox'})
+print(input_txt_div['aria-label'])
 
 all_divs = soup.find_all('div', role="feed")
 
 for a_d in  all_divs:
-    if input_field['value'] in a_d['aria-label'] :
+    if input_txt_div['aria-label'] in a_d['aria-label'] :
         s = driver.find_element(By.XPATH, xpath_soup(a_d))
         break
 
