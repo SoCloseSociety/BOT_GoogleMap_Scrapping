@@ -81,7 +81,7 @@ result_div_class = ""
 
 count = 0
 
-driver.get(search_query_link)  
+driver.get(search_query_link+"&hl=en")  
 time.sleep(10)
 # pyautogui.moveTo(100, 200)
 html = driver.page_source
